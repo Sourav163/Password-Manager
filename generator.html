@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        header,
+        section,
+        footer {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        #passlen {
+            border: 1px solid;
+            border-right: none;
+            border-top-left-radius: 30px;
+            border-bottom-left-radius: 30px;
+            outline: none;
+            padding: 5px 15px;
+            width: 50px;
+        }
+
+        #generate {
+            border: 1px solid;
+            border-radius: 30px;
+            padding: 5px 15px;
+            position: relative;
+            right: 12px;
+            cursor: pointer;
+            transition: ease-out 0.3s;
+        }
+
+        #generate:hover {
+            transform: scale(1.05);
+            box-shadow: 3px 3px 5px rgba(210, 210, 210, 0.8), -3px -3px 5px rgba(210, 210, 210, 0.8);
+        }
+
+        #subOutput {
+            background-color: white;
+            border: 2px solid;
+            border-radius: 30px;
+            margin: 0 20px;
+            padding: 10px 30px;
+            max-width: 80vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Consolas, monospace;
+            cursor: pointer;
+            transition: ease 0.2s;
+        }
+
+        #subOutput:hover {
+            box-shadow: inset 1px 1px 3px grey, inset -1px -1px 3px grey;
+        }
+
+
+        #showCopy {
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            color: blue;
+        }
+
+        #inputSpan {
+            margin: 0 10px;
+        }
+
+        #inputDiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #passlen {
+            text-align: center;
+        }
+
+        @media (max-width: 390px) {
+            #input {
+                flex-direction: column;
+            }
+
+            #inputDiv {
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div id="logo"><a href="/">RavPass</a></div>
+        <ul>
+            <li><a href="/">Manager</a></li>
+            <li><a href="generator.html" class="active">Generator</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Password Generator</h1>
+    </header>
+
+    <section id="input">
+        <div id="inputSpan">Enter Password Length (3-99)&nbsp;:</div>
+        <div id="inputDiv">
+            <input type="number" min="3" max="99" id="passlen" required>
+            <button id="generate" onclick="generator()">Generate</button>
+        </div>
+    </section>
+
+    <section id="output">
+        <div id="subOutput" onclick="copyPassword()">
+            *Generated Password Will Appear Here*
+        </div>
+    </section>
+    <div id="showCopy">&nbsp;</div>
+
+    <footer>Copyright &copy; 2024 Sourav. All rights reserved.</footer>
+
+    <script src="https://kit.fontawesome.com/11f93c8790.js" crossorigin="anonymous"></script>
+    <script>
+        class Password {
+            constructor(l) {
+                let allLowerCase = "abcdefghijklmnopqrstuvwxyz";
+                let allUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+                let allNumerics = "1234567890";
+                let allSpecialCharacters = "!@#$%^&*()_-+=[]{}\\|;:'\",.<>/~`÷×";
+
+                let p = ``;
+                let i = 0;
+                let arr = [];
+                while (i < l) {
+                    // console.log("i = ", i);
+                    let j = Math.floor(Math.random() * 4);
+                    // console.log("j = ", j);
+                    if (j % 4 === 0) {
+                        p += allLowerCase[Math.floor(Math.random() * allLowerCase.length)];
+                    }
+                    else if (j % 3 === 0) {
+                        p += allUpperCase[Math.floor(Math.random() * allUpperCase.length)];
+                    }
+                    else if (j % 2 === 0) {
+                        p += allNumerics[Math.floor(Math.random() * allNumerics.length)];
+                    }
+                    else if (j % 1 === 0) {
+                        p += allSpecialCharacters[Math.floor(Math.random() * allSpecialCharacters.length)];
+                    }
+                    i += 1;
+                }
+                // console.log(p.length, p);
+                // console.log();
+
+                let subOutput = document.getElementById("subOutput");
+                subOutput.innerHTML = p;
+            }
+        }
+
+        const generator = () => {
+            let len = parseInt(passlen.value);
+            if (len < 3 || len > 99) {
+                alert("Enter Valid Number From 3-99");
+                return;
+            }
+            let pw = new Password(len);
+        }
+        const copyPassword = () => {
+            let subOutput = document.getElementById("subOutput");
+            let showCopy = document.getElementById("showCopy");
+            navigator.clipboard.writeText(subOutput.innerHTML).then(
+                () => {
+                    showCopy.innerHTML = "COPIED!"
+                    setTimeout(() => {
+                        showCopy.innerHTML = "&nbsp;";
+                    }, 1000);
+                });
+        }
+    </script>
+</body>
+
+</html>

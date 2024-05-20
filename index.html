@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RavPass - The Secret PassWord Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div id="logo"><a href="/">RavPass</a></div>
+        <ul>
+            <li><a href="/" class="active">Manager</a></li>
+            <li><a href="generator.html">Generator</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <h1>PassWord Manager</h1>
+        <p>&emsp; We're thrilled to have you here. Your digital life contains a myriad of passowrds and we know how challenging it can be to manage them all. That's why we're here to make it easy for you.</p>
+        <h2>Your PassWords : &nbsp; <span id="saved">(Saved!)</span> <span id="copy">(Copied!)</span> <span id="notCopy">(Not Copied!)</span> <span id="deleted">(Deleted!)</span></h2>
+        <table>
+            <tr>
+                <th>WebSite</th>
+                <th>UserName</th>
+                <th>PassWord</th>
+                <th>Delete</th>
+            </tr>
+        </table>
+        <h2>Add a PassWord :</h2>
+        <form action="/action.php" method="post">
+            <div class="form">
+                <label for="website">WebSite : &nbsp; &nbsp; &nbsp; &nbsp; <input type="url" name="website" id="webSite" placeholder="Enter Website URL"></label><br>
+            </div>
+            <div class="form">
+                <label for="username">UserName : &nbsp; &nbsp; <input type="text" name="username" id="userName" placeholder="Enter Username"></label><br>
+            </div>
+            <div class="form">
+                <label for="password">PassWord : &nbsp; &nbsp; &nbsp;<input type="password" name="password" id="passWord" placeholder="Enter Password"></label><br>
+            </div>
+            <div class="form" id="divSave">
+                <input type="submit" value="Save" id="save" class="delete" />
+            </div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+    <script src="https://kit.fontawesome.com/11f93c8790.js" crossorigin="anonymous"></script>
+</body>
+</html>
