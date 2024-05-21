@@ -4,16 +4,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Currency Converter</title>
+    <title>RavPass - The Secret PassWord Manager and Generator</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
+    <style>
+        #copyright {
+            position: absolute;
+            bottom: 0;
+        }
+
+        @media (max-width: 389px) {
+            #copyright {
+                position: initial;
+            }
+        }
+    </style>
 </head>
 
 <body>
     <nav>
-        <div id="logo">
-            <a href="index.html">RavPass</a>
-        </div>
-        <ul>
+        <div id="logo"><a href="index.html">RavPass</a></div>
+        <i class="fa-solid fa-bars" id="bar"></i>
+        <ul id="navRight">
+            <i class="fa-solid fa-xmark" id="cross"></i>
             <li><a href="index.html">Manager</a></li>
             <li><a href="generator.html">Generator</a></li>
             <li><a href="about.html" class="active">About</a></li>
@@ -45,8 +58,10 @@
         confidential
         information. Take control of your digital security today.
     </p>
+    <footer id="copyright">Copyright &copy; 2024 Sourav. All rights reserved.</footer>
 
-    <script src="script.js"></script>
+    <script src="responive.js"></script>
+    <script src="https://kit.fontawesome.com/11f93c8790.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

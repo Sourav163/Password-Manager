@@ -23,7 +23,6 @@ function copyText(txt) {
   );
 }
 
-// Logic to Fill the Table :
 const deletePassword = (website) => {
   let data = localStorage.getItem("passwordManager");
   let arr = JSON.parse(data);
@@ -84,18 +83,12 @@ const showPasswords = () => {
   passWord.value = "";
 };
 
-console.log("Welcome to the Website");
 showPasswords();
 
-// let save = document.getElementById("save");
-// Directly the id can be used as variable in JS :
 save.addEventListener("click", (e) => {
   e.preventDefault();
-  console.log("Clicked");
-  console.log(webSite.value, userName.value, passWord.value);
 
   let passwordManager = localStorage.getItem("passwordManager");
-  console.log(passwordManager);
 
   if (passwordManager == null) {
     let json = [];

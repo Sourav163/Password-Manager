@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Generator</title>
+    <title>RavPass - The Secret PassWord Manager and Generator</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
     <style>
         * {
             margin: 0;
@@ -13,13 +14,21 @@
         }
 
         header,
-        section,
-        footer {
+        section {
             text-align: center;
             display: flex;
             justify-content: center;
             align-items: center;
             margin-top: 30px;
+        }
+
+        header {
+            flex-direction: column;
+        }
+
+        header p {
+            margin-top: 10px;
+            max-width: 50%;
         }
 
         #passlen {
@@ -54,6 +63,7 @@
             margin: 0 20px;
             padding: 10px 30px;
             max-width: 80vw;
+            word-break: break-all;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -89,6 +99,11 @@
             text-align: center;
         }
 
+        #copyright {
+            position: absolute;
+            bottom: 0;
+        }
+
         @media (max-width: 390px) {
             #input {
                 flex-direction: column;
@@ -104,7 +119,9 @@
 <body>
     <nav>
         <div id="logo"><a href="index.html">RavPass</a></div>
-        <ul>
+        <i class="fa-solid fa-bars" id="bar"></i>
+        <ul id="navRight">
+            <i class="fa-solid fa-xmark" id="cross"></i>
             <li><a href="index.html">Manager</a></li>
             <li><a href="generator.html" class="active">Generator</a></li>
             <li><a href="about.html">About</a></li>
@@ -114,6 +131,9 @@
 
     <header>
         <h1>Password Generator</h1>
+        <p>Secure your online presence with our password generator website. Create strong, unique passwords instantly to
+            protect your accounts from cyber threats. Easy to use, customizable, and absolutely free!
+        </p>
     </header>
 
     <section id="input">
@@ -131,10 +151,18 @@
     </section>
     <div id="showCopy">&nbsp;</div>
 
-    <footer>Copyright &copy; 2024 Sourav. All rights reserved.</footer>
+    <footer id="copyright">Copyright &copy; 2024 Sourav. All rights reserved.</footer>
 
     <script src="https://kit.fontawesome.com/11f93c8790.js" crossorigin="anonymous"></script>
     <script>
+        let generate = document.getElementById("generate");
+        input.addEventListener("keypress", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                document.getElementById("generate").click();
+            }
+        });
+
         class Password {
             constructor(l) {
                 let allLowerCase = "abcdefghijklmnopqrstuvwxyz";
@@ -146,9 +174,7 @@
                 let i = 0;
                 let arr = [];
                 while (i < l) {
-                    // console.log("i = ", i);
                     let j = Math.floor(Math.random() * 4);
-                    // console.log("j = ", j);
                     if (j % 4 === 0) {
                         p += allLowerCase[Math.floor(Math.random() * allLowerCase.length)];
                     }
@@ -163,8 +189,6 @@
                     }
                     i += 1;
                 }
-                // console.log(p.length, p);
-                // console.log();
 
                 let subOutput = document.getElementById("subOutput");
                 subOutput.innerHTML = p;
@@ -173,7 +197,7 @@
 
         const generator = () => {
             let len = parseInt(passlen.value);
-            if (len < 3 || len > 99) {
+            if (len < 3 || len > 99 || Number.isNaN(len)) {
                 alert("Enter Valid Number From 3-99");
                 return;
             }
@@ -182,6 +206,11 @@
         const copyPassword = () => {
             let subOutput = document.getElementById("subOutput");
             let showCopy = document.getElementById("showCopy");
+            if (subOutput.innerHTML === `
+            *Generated Password Will Appear Here*
+        `) {
+                return;
+            }
             navigator.clipboard.writeText(subOutput.innerHTML).then(
                 () => {
                     showCopy.innerHTML = "COPIED!"
@@ -191,6 +220,8 @@
                 });
         }
     </script>
+    <script src="responive.js"></script>
+    <script src="https://kit.fontawesome.com/11f93c8790.js" crossorigin="anonymous"></script>
 </body>
 
 </html>
