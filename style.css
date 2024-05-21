@@ -200,6 +200,11 @@ input {
     font-size: 2em;
     line-height: .03125em;
     vertical-align: -.1875em;
+    transition: 0.2s ease;
+}
+
+.logoSocial:hover {
+    transform: scale(1.2);
 }
 
 .logobg {
