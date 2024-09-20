@@ -40,6 +40,7 @@
         <span id="copy">(Copied!)</span>
         <span id="notCopy">(Not Copied!)</span>
         <span id="deleted">(Deleted!)</span>
+        <span id="fill">(All fields must be filled out !!!)</span>
       </h2>
       <table>
         <tr>
@@ -50,7 +51,7 @@
         </tr>
       </table>
       <h2>Add a PassWord :</h2>
-      <form action="/action.php" method="post">
+      <form action="/">
         <div class="form">
           <label for="website"
             >WebSite : &nbsp; &nbsp; &nbsp; &nbsp;
@@ -58,7 +59,8 @@
               type="url"
               name="website"
               id="webSite"
-              placeholder="Enter Website URL" /></label
+              placeholder="Enter Website URL"
+              required /></label
           ><br />
         </div>
         <div class="form">
@@ -68,16 +70,18 @@
               type="text"
               name="username"
               id="userName"
-              placeholder="Enter Username" /></label
+              placeholder="Enter Username"
+              required /></label
           ><br />
         </div>
         <div class="form">
-          <label for="password"
-            >PassWord : &nbsp; &nbsp; &nbsp;<input
+          <label for="password">
+            PassWord : &nbsp; &nbsp; &nbsp;<input
               type="password"
               name="password"
               id="passWord"
-              placeholder="Enter Password" /></label
+              placeholder="Enter Password"
+              required /></label
           ><br />
         </div>
         <input type="submit" value="Save" id="save" class="delete" />

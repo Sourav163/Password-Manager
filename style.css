@@ -106,7 +106,8 @@ form {
   margin: 10px;
 }
 
-input {
+input,
+button {
   border: 2px solid black;
   border-radius: 5px;
   outline: none;
@@ -155,6 +156,11 @@ input {
 }
 
 #deleted {
+  display: none;
+  color: red;
+}
+
+#fill {
   display: none;
   color: red;
 }

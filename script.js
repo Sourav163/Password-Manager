@@ -86,34 +86,54 @@ const showPasswords = () => {
 showPasswords();
 
 save.addEventListener("click", (e) => {
-  e.preventDefault();
+  if (validateForm()) {
+    e.preventDefault();
 
-  let passwordManager = localStorage.getItem("passwordManager");
+    let passwordManager = localStorage.getItem("passwordManager");
 
-  if (passwordManager == null) {
-    let json = [];
-    json.push({
-      website: webSite.value,
-      username: userName.value,
-      password: passWord.value,
-    });
-    saved.style.display = "initial";
-    setTimeout(() => {
-      saved.style.display = "none";
-    }, 1000);
-    localStorage.setItem("passwordManager", JSON.stringify(json));
-  } else {
-    let json = JSON.parse(passwordManager);
-    json.push({
-      website: webSite.value,
-      username: userName.value,
-      password: passWord.value,
-    });
-    saved.style.display = "initial";
-    setTimeout(() => {
-      saved.style.display = "none";
-    }, 1000);
-    localStorage.setItem("passwordManager", JSON.stringify(json));
+    if (passwordManager == null) {
+      let json = [];
+      json.push({
+        website: webSite.value,
+        username: userName.value,
+        password: passWord.value,
+      });
+      saved.style.display = "initial";
+      setTimeout(() => {
+        saved.style.display = "none";
+      }, 1000);
+      localStorage.setItem("passwordManager", JSON.stringify(json));
+    } else {
+      let json = JSON.parse(passwordManager);
+      json.push({
+        website: webSite.value,
+        username: userName.value,
+        password: passWord.value,
+      });
+      saved.style.display = "initial";
+      setTimeout(() => {
+        saved.style.display = "none";
+      }, 1000);
+      localStorage.setItem("passwordManager", JSON.stringify(json));
+    }
+    showPasswords();
   }
-  showPasswords();
 });
+
+function validateForm() {
+  // Get all input fields in the form
+  const inputs = document.querySelectorAll("input");
+
+  // Loop through each input field to check if it's empty
+  for (let input of inputs) {
+    if (input.type !== "submit" && input.value === "") {
+      // alert("All fields must be filled out.");
+      fill.style.display = "initial";
+      setTimeout(() => {
+        fill.style.display = "none";
+      }, 2000);
+      return false; // Prevent form submission
+    }
+  }
+  return true; // Allow form submission if all fields are filled
+}
