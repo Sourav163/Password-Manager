@@ -1,236 +1,238 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
 
 * {
-    margin: 0;
-    padding: 0;
-    font-family: 'Ubuntu', sans-serif;
-    user-select: none;
+  margin: 0;
+  padding: 0;
+  font-family: "Ubuntu", sans-serif;
+  user-select: none;
 }
 
 body {
-    background-color: rgb(200, 255, 255);
+  background-color: rgb(200, 255, 255);
 }
 
 .active {
-    color: yellow;
+  color: yellow;
 }
 
 nav {
-    background-color: navy;
-    display: flex;
-    align-items: center;
-    height: 60px;
-    font-size: 25px;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    box-shadow: 0 5px 10px navy;
+  background-color: navy;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  font-size: 25px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 5px 10px navy;
 }
 
 #logo {
-    margin: 0 20px 0 30px;
-    font-weight: bold;
-    color: white;
-    transition: 0.1s ease;
+  margin: 0 20px 0 30px;
+  font-weight: bold;
+  color: white;
+  transition: 0.1s ease;
 }
 
 #navRight {
-    position: absolute;
-    right: 20px;
-    display: flex;
-    align-items: center;
-    list-style: none;
-    margin-left: 15px;
-    font-size: 20px;
-    transition: 0.5s ease;
+  position: absolute;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin-left: 15px;
+  font-size: 20px;
+  transition: 0.5s ease;
 }
 
 #logo a,
 nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
 }
 
 nav ul li {
-    margin: 0 15px;
-    transition: 0.1s ease;
+  margin: 0 15px;
+  transition: 0.1s ease;
 }
 
 #logo:hover,
 #logo a:hover,
 nav ul li:hover,
 nav ul li a:hover {
-    transform: scale(1.1);
-    color: yellow;
+  transform: scale(1.1);
+  color: yellow;
 }
 
 .container {
-    margin: 30px;
+  margin: 30px;
 }
 
 .container h1 {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .container h2 {
-    margin-top: 15px;
+  margin-top: 15px;
 }
 
 table,
 th,
 td {
-    border: 2px solid black;
-    margin: 10px;
-    text-align: center;
+  border: 2px solid black;
+  margin: 10px;
+  text-align: center;
 }
 
 th,
 td {
-    padding: 5px 15px;
+  padding: 5px 15px;
 }
 
 td {
-    word-break: break-all;
+  word-break: break-all;
 }
 
 td i {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 form {
-    margin: 20px 10px;
+  margin: 20px 10px;
 }
 
 .form {
-    margin: 10px;
+  margin: 10px;
 }
 
 input {
-    border: 2px solid black;
-    border-radius: 5px;
-    outline: none;
-    padding: 5px;
-    margin: 5px 0;
-    width: 300px;
+  border: 2px solid black;
+  border-radius: 5px;
+  outline: none;
+  padding: 5px;
+  margin: 5px 0;
+  width: 300px;
 }
 
 #save {
-    background-color: rgb(0, 255, 195);
-    width: 150px;
-    margin: 20px 0 45px 110px;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 15px;
-    transition: 0.2s ease;
+  background-color: rgb(0, 255, 195);
+  width: 150px;
+  margin: 20px 0 45px 110px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  transition: 0.2s ease;
 }
 
 .dlt {
-    border: none;
-    cursor: pointer;
-    transition: 0.1s ease;
+  border: none;
+  cursor: pointer;
+  transition: 0.1s ease;
 }
 
 .dlt:hover {
-    transform: scale(1.3);
+  transform: scale(1.3);
 }
 
 #save:hover {
-    transform: scale(1.1);
+  transform: scale(1.1);
 }
 
 #saved {
-    display: none;
-    color: grey;
+  display: none;
+  color: grey;
 }
 
 #copy {
-    display: none;
-    color: grey;
+  display: none;
+  color: grey;
 }
 
 #notCopy {
-    display: none;
-    color: red;
+  display: none;
+  color: red;
 }
 
 #deleted {
-    display: none;
-    color: red;
+  display: none;
+  color: red;
 }
 
 .aboutHead {
-    margin: 50px 0 15px 10px;
+  margin: 50px 0 15px 10px;
 }
 
 .aboutPara {
-    margin: 0 10px 20px;
+  margin: 0 10px 20px;
 }
 
 .center {
-    text-align: center;
+  text-align: center;
 }
 
 .contactContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 90vh;
-    width: 98vw;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  width: 98vw;
+  flex-direction: column;
 }
 
 .item {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .social {
-    margin-top: 20px;
-    word-break: break-all;
-    text-align: center;
+  margin-top: 20px;
+  word-break: break-all;
+  text-align: center;
 }
 
 .social a {
-    position: relative;
-    text-decoration: none;
+  position: relative;
+  text-decoration: none;
 }
 
 .logoSocial {
-    margin: 20px 5px;
-    font-size: 2em;
-    line-height: .03125em;
-    vertical-align: -.1875em;
-    transition: 0.2s ease;
+  margin: 20px 5px;
+  font-size: 2em;
+  line-height: 0.03125em;
+  vertical-align: -0.1875em;
+  transition: 0.2s ease;
 }
 
 .logoSocial:hover {
-    transform: scale(1.2);
+  transform: scale(1.2);
 }
 
 .logobg {
-    display: inline;
-    position: absolute;
-    top: -5px;
-    left: 5px;
-    height: 27px;
-    width: 28px;
-    border-radius: 32px;
-    background-color: white;
-    z-index: -1;
+  display: inline;
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  height: 27px;
+  width: 28px;
+  border-radius: 32px;
+  background-color: white;
+  z-index: -1;
 }
 
 #bar,
 #cross {
-    display: none;
+  display: none;
 }
 
 #copyright {
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    color: aqua;
-    width: 100vw;
-    padding: 2px 0;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: aqua;
+  width: 100vw;
+  padding: 2px 0;
+  position: fixed;
+  bottom: 0;
 }
