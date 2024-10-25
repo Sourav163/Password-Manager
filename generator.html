@@ -1,227 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RavPass - The Secret PassWord Manager and Generator</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="responsive.css">
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="responsive.css" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+      }
 
-        header,
-        section {
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 30px;
-        }
+      header,
+      section {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 30px;
+      }
 
-        header {
-            flex-direction: column;
-        }
+      header {
+        flex-direction: column;
+      }
 
-        header p {
-            margin-top: 10px;
-            max-width: 50%;
-        }
+      header p {
+        margin-top: 10px;
+        max-width: 50%;
+      }
 
-        #passlen {
-            border: 1px solid;
-            border-right: none;
-            border-top-left-radius: 30px;
-            border-bottom-left-radius: 30px;
-            outline: none;
-            padding: 5px 15px;
-            width: 50px;
-        }
+      #passlen {
+        border: 1px solid;
+        border-right: none;
+        border-top-left-radius: 30px;
+        border-bottom-left-radius: 30px;
+        outline: none;
+        padding: 5px 15px;
+        width: 50px;
+      }
 
-        #generate {
-            border: 1px solid;
-            border-radius: 30px;
-            padding: 5px 15px;
-            position: relative;
-            right: 12px;
-            cursor: pointer;
-            transition: ease-out 0.3s;
-        }
+      #generate {
+        border: 1px solid;
+        border-radius: 30px;
+        width: 100px;
+        position: relative;
+        right: 12px;
+        cursor: pointer;
+        transition: ease-out 0.3s;
+      }
 
-        #generate:hover {
-            transform: scale(1.05);
-            box-shadow: 3px 3px 5px rgba(210, 210, 210, 0.8), -3px -3px 5px rgba(210, 210, 210, 0.8);
-        }
+      #generate:hover {
+        transform: scale(1.05);
+        box-shadow: 3px 3px 5px rgba(210, 210, 210, 0.8),
+          -3px -3px 5px rgba(210, 210, 210, 0.8);
+      }
 
-        #subOutput {
-            background-color: white;
-            border: 2px solid;
-            border-radius: 30px;
-            margin: 0 20px;
-            padding: 10px 30px;
-            max-width: 80vw;
-            word-break: break-all;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: Consolas, monospace;
-            cursor: pointer;
-            transition: ease 0.2s;
-        }
+      #subOutput {
+        background-color: white;
+        border: 2px solid;
+        border-radius: 30px;
+        margin: 0 20px;
+        padding: 10px 30px;
+        max-width: 80vw;
+        word-break: break-all;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Consolas, monospace;
+        cursor: pointer;
+        transition: ease 0.2s;
+      }
 
-        #subOutput:hover {
-            box-shadow: inset 1px 1px 3px grey, inset -1px -1px 3px grey;
-        }
+      #subOutput:hover {
+        box-shadow: inset 1px 1px 3px grey, inset -1px -1px 3px grey;
+      }
 
+      #showCopy {
+        margin-top: 20px;
+        text-align: center;
+        font-weight: bold;
+        font-size: 20px;
+        color: blue;
+      }
 
-        #showCopy {
-            margin-top: 20px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 20px;
-            color: blue;
-        }
+      #inputSpan {
+        margin: 0 10px;
+      }
 
-        #inputSpan {
-            margin: 0 10px;
+      #inputDiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #passlen {
+        text-align: center;
+      }
+
+      #copyright {
+        position: absolute;
+        bottom: 0;
+      }
+
+      @media (max-width: 390px) {
+        #input {
+          flex-direction: column;
         }
 
         #inputDiv {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+          margin-top: 10px;
         }
-
-        #passlen {
-            text-align: center;
-        }
-
-        #copyright {
-            position: absolute;
-            bottom: 0;
-        }
-
-        @media (max-width: 390px) {
-            #input {
-                flex-direction: column;
-            }
-
-            #inputDiv {
-                margin-top: 10px;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <nav>
-        <div id="logo"><a href="index.html">RavPass</a></div>
-        <i class="fa-solid fa-bars" id="bar"></i>
-        <ul id="navRight">
-            <i class="fa-solid fa-xmark" id="cross"></i>
-            <li><a href="index.html">Manager</a></li>
-            <li><a href="generator.html" class="active">Generator</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-        </ul>
+      <div id="logo"><a href="index.html">RavPass</a></div>
+      <i class="fa-solid fa-bars" id="bar"></i>
+      <ul id="navRight">
+        <i class="fa-solid fa-xmark" id="cross"></i>
+        <li><a href="index.html">Manager</a></li>
+        <li><a href="generator.html" class="active">Generator</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
     </nav>
 
     <header>
-        <h1>Password Generator</h1>
-        <p>Secure your online presence with our password generator website. Create strong, unique passwords instantly to
-            protect your accounts from cyber threats. Easy to use, customizable, and absolutely free!
-        </p>
+      <h1>Password Generator</h1>
+      <p>
+        Secure your online presence with our password generator website. Create
+        strong, unique passwords instantly to protect your accounts from cyber
+        threats. Easy to use, customizable, and absolutely free!
+      </p>
     </header>
 
     <section id="input">
-        <div id="inputSpan">Enter Password Length (3-99)&nbsp;:</div>
-        <div id="inputDiv">
-            <input type="number" min="3" max="99" id="passlen" required>
-            <button id="generate" onclick="generator()">Generate</button>
-        </div>
+      <div id="inputSpan">Enter Password Length (3-99)&nbsp;:</div>
+      <div id="inputDiv">
+        <input type="number" min="3" max="99" id="passlen" required />
+        <button id="generate" onclick="generator()">Generate</button>
+      </div>
     </section>
 
     <section id="output">
-        <div id="subOutput" onclick="copyPassword()">
-            *Generated Password Will Appear Here*
-        </div>
+      <div id="subOutput" onclick="copyPassword()">
+        *Generated Password Will Appear Here*
+      </div>
     </section>
     <div id="showCopy">&nbsp;</div>
 
-    <footer id="copyright">Copyright &copy; 2024 Sourav. All rights reserved.</footer>
+    <footer id="copyright">
+      Copyright &copy; 2024 Sourav. All rights reserved.
+    </footer>
 
-    <script src="https://kit.fontawesome.com/11f93c8790.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/11f93c8790.js"
+      crossorigin="anonymous"
+    ></script>
     <script>
-        let generate = document.getElementById("generate");
-        input.addEventListener("keypress", function (event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                document.getElementById("generate").click();
-            }
-        });
-
-        class Password {
-            constructor(l) {
-                let allLowerCase = "abcdefghijklmnopqrstuvwxyz";
-                let allUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-                let allNumerics = "1234567890";
-                let allSpecialCharacters = "!@#$%^&*()_-+=[]{}\\|;:'\",.<>/~`÷×";
-
-                let p = ``;
-                let i = 0;
-                let arr = [];
-                while (i < l) {
-                    let j = Math.floor(Math.random() * 4);
-                    if (j % 4 === 0) {
-                        p += allLowerCase[Math.floor(Math.random() * allLowerCase.length)];
-                    }
-                    else if (j % 3 === 0) {
-                        p += allUpperCase[Math.floor(Math.random() * allUpperCase.length)];
-                    }
-                    else if (j % 2 === 0) {
-                        p += allNumerics[Math.floor(Math.random() * allNumerics.length)];
-                    }
-                    else if (j % 1 === 0) {
-                        p += allSpecialCharacters[Math.floor(Math.random() * allSpecialCharacters.length)];
-                    }
-                    i += 1;
-                }
-
-                let subOutput = document.getElementById("subOutput");
-                subOutput.innerHTML = p;
-            }
+      let generate = document.getElementById("generate");
+      input.addEventListener("keypress", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          document.getElementById("generate").click();
         }
+      });
 
-        const generator = () => {
-            let len = parseInt(passlen.value);
-            if (len < 3 || len > 99 || Number.isNaN(len)) {
-                alert("Enter Valid Number From 3-99");
-                return;
+      class Password {
+        constructor(l) {
+          let allLowerCase = "abcdefghijklmnopqrstuvwxyz";
+          let allUpperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+          let allNumerics = "1234567890";
+          let allSpecialCharacters = "!@#$%^&*()_-+=[]{}\\|;:'\",.<>/~`÷×";
+
+          let p = ``;
+          let i = 0;
+          let arr = [];
+          while (i < l) {
+            let j = Math.floor(Math.random() * 4);
+            if (j % 4 === 0) {
+              p +=
+                allLowerCase[Math.floor(Math.random() * allLowerCase.length)];
+            } else if (j % 3 === 0) {
+              p +=
+                allUpperCase[Math.floor(Math.random() * allUpperCase.length)];
+            } else if (j % 2 === 0) {
+              p += allNumerics[Math.floor(Math.random() * allNumerics.length)];
+            } else if (j % 1 === 0) {
+              p +=
+                allSpecialCharacters[
+                  Math.floor(Math.random() * allSpecialCharacters.length)
+                ];
             }
-            let pw = new Password(len);
+            i += 1;
+          }
+
+          let subOutput = document.getElementById("subOutput");
+          subOutput.innerHTML = p;
         }
-        const copyPassword = () => {
-            let subOutput = document.getElementById("subOutput");
-            let showCopy = document.getElementById("showCopy");
-            if (subOutput.innerHTML === `
+      }
+
+      const generator = () => {
+        let len = parseInt(passlen.value);
+        if (len < 3 || len > 99 || Number.isNaN(len)) {
+          alert("Enter Valid Number From 3-99");
+          return;
+        }
+        let pw = new Password(len);
+      };
+      const copyPassword = () => {
+        let subOutput = document.getElementById("subOutput");
+        let showCopy = document.getElementById("showCopy");
+        if (
+          subOutput.innerHTML ===
+          `
             *Generated Password Will Appear Here*
-        `) {
-                return;
-            }
-            navigator.clipboard.writeText(subOutput.innerHTML).then(
-                () => {
-                    showCopy.innerHTML = "COPIED!"
-                    setTimeout(() => {
-                        showCopy.innerHTML = "&nbsp;";
-                    }, 1000);
-                });
+        `
+        ) {
+          return;
         }
+        navigator.clipboard.writeText(subOutput.innerHTML).then(() => {
+          showCopy.innerHTML = "COPIED!";
+          setTimeout(() => {
+            showCopy.innerHTML = "&nbsp;";
+          }, 1000);
+        });
+      };
     </script>
     <script src="responive.js"></script>
-    <script src="https://kit.fontawesome.com/11f93c8790.js" crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://kit.fontawesome.com/11f93c8790.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
